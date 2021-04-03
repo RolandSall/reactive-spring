@@ -70,5 +70,18 @@ public class TestControllerTest {
         assertEquals(expectedIntegerList,listEntityExchangeResult.getResponseBody());
 
     }
+
+    @Test
+    public void mono(){
+        EntityExchangeResult<Integer> integerEntityExchangeResult = webTestClient.get()
+                .uri("/mono")
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Integer.class)
+                .returnResult();
+
+        assertEquals(1,integerEntityExchangeResult.getResponseBody());
+    }
 }
 
